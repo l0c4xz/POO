@@ -1,35 +1,43 @@
-package Encapsulamento;
+package Polimorfismo;
 
 public class Produto {
-    private String nome;
-    private double preco;
+    long id;
+    String nome;
+    double preco;
+}
 
-    public Produto(String nome, double preco) {
-        this.nome = nome;
-        setPreco(preco);
+class Sorvete extends Produto {
+    double tempAdequada;
+
+    public void exibirInfo() {
+        System.out.println("Sorvete: " + nome + ", Preço: " + preco + ", Temp. Ideal: " + tempAdequada + "°C");
     }
+}
 
-    public String getNome() {
-        return nome;
+class Camisa extends Produto {
+    String cor;
+    String tecido;
+    String tamanho;
+
+    public void exibirInfo() {
+        System.out.println("Camisa: " + nome + ", Cor: " + cor + ", Tecido: " + tecido + ", Tamanho: " + tamanho);
     }
+}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+class PrincipalProduto {
+    public static void main(String[] args) {
+        Sorvete s1 = new Sorvete();
+        s1.nome = "Chocolate";
+        s1.preco = 15.90;
+        s1.tempAdequada = -10;
+        s1.exibirInfo();
 
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        if (preco >= 0) {
-            this.preco = preco;
-        } else {
-            System.out.println("Preço inválido! Não pode ser negativo.");
-        }
-    }
-
-    public void exibirInformacoes() {
-        System.out.println("Produto: " + nome + ", Preço: " + preco);
+        Camisa c1 = new Camisa();
+        c1.nome = "Camisa Polo";
+        c1.preco = 49.90;
+        c1.cor = "Azul";
+        c1.tecido = "Algodão";
+        c1.tamanho = "M";
+        c1.exibirInfo();
     }
 }
